@@ -29,26 +29,30 @@ public class SampleController {
 	public void deleteAll() {
 		repo.deleteAll();
 	}
-	
-	@RequestMapping(value="/countries", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/countries", method = RequestMethod.POST)
 	public ResponseEntity<Country> newCountry(@RequestBody Country c) {
 		repo.save(c);
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
-	
-	@RequestMapping(value="/countries/{id}", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/countries/{id}", method = RequestMethod.GET)
 	public Country getCountry(@PathVariable("id") int id) {
 		return repo.findOne(id);
 	}
-	
-	@RequestMapping(value="/countries/{id}", method = RequestMethod.DELETE)
+
+	@RequestMapping(value = "/countries/{id}", method = RequestMethod.DELETE)
 	public void deleteCountry(@PathVariable("id") int id) {
 		repo.delete(id);
 	}
-	
-	public void test(){
-		
-	}
 
+	@RequestMapping(value = "/countries/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Country> updateCountry(@PathVariable("id") int id, @RequestBody Country c) {
+		Country updating = repo.findOne(id);
+		updating.setName(c.getName());
+		updating.setPopulation(c.getPopulation());
+		repo.save(updating);
+		return new ResponseEntity(updating,HttpStatus.OK);
+	}
 
 }
