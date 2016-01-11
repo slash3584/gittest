@@ -46,6 +46,9 @@ public class SampleController {
 		repo.delete(id);
 	}
 	
+	public void test(){
+		
+	}
 
 
 }
