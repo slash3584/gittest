@@ -30,7 +30,7 @@ public class SampleController {
 		repo.deleteAll();
 	}
 	
-	@RequestMapping(value="/countries/", method = RequestMethod.DELETE)
+	@RequestMapping(value="/countries", method = RequestMethod.POST)
 	public ResponseEntity<Country> newCountry(@RequestBody Country c) {
 		repo.save(c);
 		return new ResponseEntity(HttpStatus.CREATED);
