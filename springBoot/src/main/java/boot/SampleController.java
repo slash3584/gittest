@@ -52,7 +52,7 @@ public class SampleController {
 		updating.setName(c.getName());
 		updating.setPopulation(c.getPopulation());
 		repo.save(updating);
-		return new ResponseEntity(updating,HttpStatus.OK);
+		return new ResponseEntity<Country>(updating,HttpStatus.OK);
 	}
 
 }
