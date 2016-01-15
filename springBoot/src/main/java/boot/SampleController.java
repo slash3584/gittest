@@ -46,7 +46,7 @@ public class SampleController {
 		repo.delete(id);
 	}
 
-	@RequestMapping(value = "/countries/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/countries/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Country> updateCountry(@PathVariable("id") int id, @RequestBody Country c) {
 		Country updating = repo.findOne(id);
 		updating.setName(c.getName());
